@@ -123,6 +123,8 @@ int main(){
       for(size_t j = 0; j < N; ++j){
         for(size_t Kstop= 0; Kstop < N; Kstop += 16){
        if (((uintptr_t)(a + (i * N + Kstop)) % 64 != 0) || ((uintptr_t)(c + (j * N + Kstop)) % 64 != 0)) {
+         printf("%d %d \n",(i * N + Kstop),(c + (j * N + Kstop)));
+          fflush(stdout);
          assert(false);
       }
         xm = _mm512_load_ps(a+(i*N+Kstop));
